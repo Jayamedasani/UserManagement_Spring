@@ -4,3 +4,5 @@ org\example\controller\UserServlet.class
 org\example\Main.class
 org\example\userinterface\UserOperations.class
 org\example\connection\MySQLConnection.class
+org\example\service\UserService.class
+org\example\exceptions\EnterValidInputError.class

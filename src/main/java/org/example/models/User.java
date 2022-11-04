@@ -1,9 +1,7 @@
 package org.example.models;
-
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Objects;
-
 public class User {
     private String name,city;
     private BigInteger phnno;
@@ -22,31 +20,24 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
-
     public BigInteger getPhnno() {
         return phnno;
     }
-
     public void setPhnno(BigInteger phnno) {
         this.phnno = phnno;
     }
-
     public LocalDate getDob() {
         return dob;
     }
-
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,12 +45,10 @@ public class User {
         User user = (User) o;
         return Objects.equals(name, user.name) && Objects.equals(city, user.city) && Objects.equals(phnno, user.phnno) && Objects.equals(dob, user.dob);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(name, city, phnno, dob);
     }
-
     @Override
     public String toString() {
         return "User{" +

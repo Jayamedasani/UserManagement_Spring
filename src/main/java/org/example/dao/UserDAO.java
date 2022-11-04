@@ -1,11 +1,14 @@
 package org.example.dao;
 import org.example.connection.MySQLConnection;
+import org.example.exceptions.EnterValidInputError;
 import org.example.models.User;
+import org.example.service.UserService;
 import org.example.userinterface.UserOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.*;
@@ -14,9 +17,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Service
-public class UserDAO implements UserOperations {
+public class UserDAO{
     private Logger logger=LoggerFactory.getLogger(UserDAO.class);
-    @Override
     public void addUser(User user) {
         Connection connection= MySQLConnection.getConnection();
         String sql="insert into person(name,phnno,city,dob) values(?,?,?,?)";
@@ -37,8 +39,8 @@ public class UserDAO implements UserOperations {
         }
     }
 
-    @Override
     public void deleteUser(User user) {
+
         Connection connection=MySQLConnection.getConnection();
         String sql="delete from person where phnno=?";
         try{
@@ -53,8 +55,8 @@ public class UserDAO implements UserOperations {
         }
     }
 
-    @Override
     public void updateUser(User user, BigInteger phnno) {
+
         Connection connection=MySQLConnection.getConnection();
         String sql="update person set name=? ,city=? ,phnno=?, dob=? where phnno=?";
         try{
@@ -73,8 +75,8 @@ public class UserDAO implements UserOperations {
         }
     }
 
-    @Override
-    public User searchUser(String name) {
+    public User searchUserByName(String name) {
+
         Connection connection=MySQLConnection.getConnection();
         String sql="select * from person where name=?";
         try{
@@ -94,7 +96,7 @@ public class UserDAO implements UserOperations {
         return null;
     }
 
-    @Override
+
     public List<User> getUsers() {
         Connection connection=MySQLConnection.getConnection();
         String sql="select * from person";
